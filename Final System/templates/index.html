@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  
+</head>
+
+
+<style>
+  .dropbtn {
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #3e8e41;}
+  </style>
+
+
+<body>
+    
+ <div class="login">
+    <h1>Employee Attrition Status</h1>
+        <!-- Main Input For Receiving Query to our ML -->
+
+    <table> 
+    <tr>
+    <td>
+      <form action="{{ url_for('predict')}}"method="post">
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+  </td>
+  <td>  
+  <form action="{{ url_for('visualize')}}" method="post"  target="_blank">
+      <button type="submit" class="btn btn-primary btn-block btn-large"  target="_blank">Visualise model</button>
+    </form>
+  </td>
+  <td>
+    <div class="dropdown">
+      <button class="btn btn-primary btn-block btn-large dropbtn">Graphical Analysis</button>
+      <div class="dropdown-content">
+        <a><form action="{{ url_for('graph1')}}" method="post"  target="_blank">
+          <button type="submit" class="btn btn-primary btn-block btn-large"  target="_blank">Graph1</button>
+        </form></a>
+        <a><form action="{{ url_for('graph2')}}" method="post"  target="_blank">
+          <button type="submit" class="btn btn-primary btn-block btn-large"  target="_blank">Graph2</button>
+        </form></a>
+
+        <a><form action="{{ url_for('graph3')}}" method="post"  target="_blank">
+          <button type="submit" class="btn btn-primary btn-block btn-large"  target="_blank">Graph3</button>
+        </form></a>
+
+        <a><form action="{{ url_for('graph4')}}" method="post"  target="_blank">
+          <button type="submit" class="btn btn-primary btn-block btn-large"  target="_blank">Graph4</button>
+        </form></a>
+
+        <a><form action="{{ url_for('graph5')}}" method="post"  target="_blank">
+          <button type="submit" class="btn btn-primary btn-block btn-large"  target="_blank">Graph5</button>
+        </form></a>
+
+        <a><form action="{{ url_for('graph6')}}" method="post"  target="_blank">
+          <button type="submit" class="btn btn-primary btn-block btn-large"  target="_blank">Graph6</button>
+        </form></a>
+
+        <a><form action="{{ url_for('graph7')}}" method="post"  target="_blank">
+          <button type="submit" class="btn btn-primary btn-block btn-large"  target="_blank">Graph7</button>
+        </form></a>
+      </div>
+    </td>
+    <td><form action="{{ url_for('risk')}}" method="post" >
+      <button type="submit" class="btn btn-primary btn-block btn-large">Risk Analysis</button>
+    </form></td>
+    </tr>
+    </table>
+    </div>
+
+
+    <table align="center">
+        {% for table in tables %}
+          <h2>{{titles[loop.index]}}</h2>
+          {{ table|safe }}
+        {% endfor %}
+      </table>    
+
+      <table align="left">
+        {% for table in tables2 %}
+          <h2>{{titles2[loop.index]}}</h2>
+          {{ table|safe }}
+        {% endfor %}
+      </table>  
+      
+      <table align="right">
+        {% for table in tables3 %}
+          <h2>{{titles3[loop.index]}}</h2>
+          {{ table|safe }}
+        {% endfor %}
+      </table> 
+
+      <table align="right">
+        {% for table in tables4 %}
+          <h2>{{titles4[loop.index]}}</h2>
+          {{ table|safe }}
+        {% endfor %}
+      </table> 
+
+      <table align="right">
+        {% for table in tables5 %}
+          <h2>{{titles5[loop.index]}}</h2>
+          {{ table|safe }}
+        {% endfor %}
+      </table> 
+</div>
+
+
+
+</body>
+</html>
